@@ -48,9 +48,9 @@ describe("Leslar", function () {
       await leslar.connect(addr1).approve(owner.address, ethers.utils.parseUnits("10000000000", decimals))
       await leslar.transfer(addr1.address, ethers.utils.parseUnits("10000000000", decimals))
       await leslar.transferFrom(addr1.address, addr2.address, ethers.utils.parseUnits("10000000000", decimals))
-      expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9700000000", decimals))
+      expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9700727554.566592494", decimals))
 
-      expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("300000000", decimals))
+      expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("225016876.265719928", decimals))
     })
 
     it("Should let you give another address approval to send on your behalf on sell type", async function() {
@@ -60,9 +60,9 @@ describe("Leslar", function () {
       await leslar.connect(addr1).approve(owner.address, ethers.utils.parseUnits("10000000000", decimals))
       await leslar.transfer(addr1.address, ethers.utils.parseUnits("10000000000", decimals))
       await leslar.transferFrom(addr1.address, addr2.address, ethers.utils.parseUnits("10000000000", decimals))
-      expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9700000000", decimals))
+      expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9700727554.566592494", decimals))
 
-      expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("300000000", decimals))
+      expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("225016876.265719928", decimals))
     })
 
     it("Should be able to transfer after set dev wallet", async function() {
@@ -81,7 +81,7 @@ describe("Leslar", function () {
         console.log("balance ", await leslar.balanceOf(addr3.address));
         await leslar.triggerTax()
         // Make sure that dev address get the token
-        expect(await leslar.balanceOf(addr1.address)).to.equal(ethers.utils.parseUnits("600000000", decimals))
+        expect(await leslar.balanceOf(addr1.address)).to.equal(ethers.utils.parseUnits("500000000", decimals))
     })
 
     it("Should be able to set buy fee", async function() {
@@ -90,9 +90,9 @@ describe("Leslar", function () {
         await leslar.connect(addr1).approve(owner.address, ethers.utils.parseUnits("10000000000", decimals))
         await leslar.transfer(addr1.address, ethers.utils.parseUnits("10000000000", decimals))
         await leslar.transferFrom(addr1.address, addr2.address, ethers.utils.parseUnits("10000000000", decimals))
-        expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9000000000", decimals))
+        expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9002250562.640660165", decimals))
   
-        expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("1000000000", decimals))
+        expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("750187546.886721680", decimals))
     });
    
     it("Should be able to set sell fee", async function() {
@@ -102,9 +102,9 @@ describe("Leslar", function () {
         await leslar.connect(addr1).approve(owner.address, ethers.utils.parseUnits("10000000000", decimals))
         await leslar.transfer(addr1.address, ethers.utils.parseUnits("10000000000", decimals))
         await leslar.transferFrom(addr1.address, addr2.address, ethers.utils.parseUnits("10000000000", decimals))
-        expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9500000000", decimals))
+        expect(await leslar.balanceOf(addr2.address)).to.equal(ethers.utils.parseUnits("9501187648.456057007", decimals))
 
-        expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("500000000", decimals))
+        expect(await leslar.balanceOf(leslar.address)).to.equal(ethers.utils.parseUnits("375046880.860107513", decimals))
     });
 
     // it("Wallet should be cannot more than 2% of total supply", async function() {
