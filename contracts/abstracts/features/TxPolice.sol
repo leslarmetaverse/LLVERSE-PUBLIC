@@ -9,10 +9,14 @@ import "../core/Supply.sol";
 
 abstract contract TxPolice is Tokenomics, Pancake, RFI, Supply {
 	using SafeMath for uint256;
-	// Wallet hard cap 2% of total supply
-	uint256 public maxWalletSize = _tTotal.mul(2).div(100);
+	// Changing this you can increase/decrease decimals of max wallet size 
+	uint256 public maxWalletSizeMultiplier = 1;
+	// Changing this you can increase/decrease decimals of max transaction amount
+	uint256 public maxTxAmountMultiplier = 1;
+	// Wallet hard cap 100% of total supply
+	uint256 public maxWalletSize = _tTotal.mul(1).div(maxWalletSizeMultiplier);
 	// Can transfer wallet-to-wallet 100%
-	uint256 public maxTxAmount = _tTotal.mul(100).div(100);
+	uint256 public maxTxAmount = _tTotal.mul(1).div(maxTxAmountMultiplier);
 
 	// Global toggle to avoid trigger loops
 	bool internal inTriggerProcess;
@@ -144,6 +148,24 @@ abstract contract TxPolice is Tokenomics, Pancake, RFI, Supply {
 	function maxSellAllowancePerCycle() public view returns(uint256) {
 		// 0.1% of total circulating supply.
 		return totalCirculatingSupply().mul(1).div(maxSellAllowanceMultiplier);
+	}
+
+	/**
+	* @notice Allows to adjust your maxWalletSizeMultiplier.
+	* 100 = 1% 
+	*/
+	function setMaxWalletSizeMultiplier(uint256 mult) external onlyOwner {
+		require(mult > 0, "Multiplier can't be 0.");
+		maxWalletSizeMultiplier = mult;
+	}
+
+	/**
+	* @notice Allows to adjust your maxTxAmountMultiplier.
+	* 100 = 1% 
+	*/
+	function setMaxTxAmountMultiplier(uint256 mult) external onlyOwner {
+		require(mult > 0, "Multiplier can't be 0.");
+		maxTxAmountMultiplier = mult;
 	}
 
 	/**
