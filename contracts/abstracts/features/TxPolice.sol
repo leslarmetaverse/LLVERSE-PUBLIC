@@ -156,6 +156,7 @@ abstract contract TxPolice is Tokenomics, Pancake, RFI, Supply {
 	*/
 	function setMaxWalletSizeMultiplier(uint256 mult) external onlyOwner {
 		require(mult > 0, "Multiplier can't be 0.");
+		require(mult < 1000000, "Multiplier can't be 1000000.");
 		maxWalletSizeMultiplier = mult;
 	}
 
@@ -165,6 +166,7 @@ abstract contract TxPolice is Tokenomics, Pancake, RFI, Supply {
 	*/
 	function setMaxTxAmountMultiplier(uint256 mult) external onlyOwner {
 		require(mult > 0, "Multiplier can't be 0.");
+		require(mult < 1000000, "Multiplier can't be 1000000.");
 		maxTxAmountMultiplier = mult;
 	}
 
