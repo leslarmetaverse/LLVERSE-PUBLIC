@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.9;
 
-
+//    __   __________   ___   ___ 
+//   / /  / __/ __/ /  / _ | / _ \
+//  / /__/ _/_\ \/ /__/ __ |/ , _/
+// /____/___/___/____/_/ |_/_/|_| 
+// LESLARVERSE
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
@@ -18,7 +22,7 @@ import "./abstracts/features/TxPolice.sol";
 import "./abstracts/core/Pancake.sol";
 import "./abstracts/helpers/Helpers.sol";
 
-contract LESLAR is 
+contract LESLARVERSE is 
 	IERC20Metadata, 
 	Context, 
 	Ownable,
